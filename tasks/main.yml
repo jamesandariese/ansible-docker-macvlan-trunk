@@ -1,0 +1,14 @@
+---
+# tasks file for docker_macvlan_bridge
+- name: create docker macvlan trunked network
+  community.docker.docker_network:
+    driver: macvlan
+    driver_options:
+      parent: "{{parent}}"
+    enable_ipv6: no
+    internal: no
+    name: "{{network_name}}"
+    ipam_config:
+     - gateway: "{{gateway}}"
+       iprange: "{{iprange}}"
+       subnet: "{{subnet}}"
